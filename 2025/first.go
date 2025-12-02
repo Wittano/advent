@@ -25,7 +25,7 @@ func readInput(path string) ([]string, error) {
 	return in, nil
 }
 
-func firstPart() {
+func TaskOnePartOne() {
 	in, err := readInput("./2025/data/1.1.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -39,7 +39,7 @@ func firstPart() {
 	fmt.Printf("First part result: %d\n", result)
 }
 
-func secondPart() {
+func TaskOnePartTwo() {
 	in, err := readInput("./2025/data/1.2.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -51,9 +51,4 @@ func secondPart() {
 	}
 
 	fmt.Printf("Second part result: %d\n", result)
-}
-
-func main() {
-	firstPart()
-	secondPart()
 }
