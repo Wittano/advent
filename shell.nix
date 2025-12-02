@@ -4,6 +4,8 @@
 , act
 , nixd
 , nixpkgs-fmt
+, gcc
+, pcre
 }: mkShell {
   hardeningDisable = [ "all" ];
 
@@ -21,5 +23,7 @@
 
     # Github actions
     act
+    gcc
+    pcre
   ];
 }
