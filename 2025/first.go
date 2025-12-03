@@ -1,32 +1,15 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/wittano/advent/2025/firstDay"
+	"github.com/wittano/advent/text"
 )
 
-func readInput(path string) ([]string, error) {
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-
-	raw := bufio.NewScanner(f)
-	in := make([]string, 0, len(raw.Bytes()))
-	for raw.Scan() {
-		in = append(in, raw.Text())
-	}
-
-	return in, nil
-}
-
 func TaskOnePartOne() {
-	in, err := readInput("./2025/data/1.1.txt")
+	in, err := text.ReadFileByLines("./2025/data/1.1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,7 +23,7 @@ func TaskOnePartOne() {
 }
 
 func TaskOnePartTwo() {
-	in, err := readInput("./2025/data/1.2.txt")
+	in, err := text.ReadFileByLines("./2025/data/1.2.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
