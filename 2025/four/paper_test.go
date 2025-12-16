@@ -24,3 +24,26 @@ func TestCountAvailablePaperRolls(t *testing.T) {
 		t.Fatalf("invalid sum of available paper rolls: want %d, got %d", exp, sum)
 	}
 }
+
+func TestCountAvailablePaperRollsWithRemove(t *testing.T) {
+	data := `..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@.`
+
+	sum, err := CountAvailablePaperRollsWithRemove(data)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	const exp = 43
+	if sum != exp {
+		t.Fatalf("invalid sum of available paper rolls: want %d, got %d", exp, sum)
+	}
+}

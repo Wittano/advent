@@ -114,3 +114,38 @@ func CountAvailablePaperRolls(rawLines string) (sum uint, err error) {
 
 	return
 }
+
+func CountAvailablePaperRollsWithRemove(rawLines string) (sum uint, err error) {
+	rolls, err := NewPaperRolls(rawLines)
+	if err != nil {
+		return 0, err
+	}
+
+	type position struct {
+		x, y int
+	}
+
+	eliminatedPapers := make([]position, 0, len(rolls))
+	for wasRemoved := true; wasRemoved; {
+		for y, line := range rolls {
+			for x, mark := range line {
+				if mark == Paper && rolls.IsPaperAccess(x, y) {
+					sum++
+					eliminatedPapers = append(eliminatedPapers, position{x, y})
+				}
+			}
+		}
+
+		if len(eliminatedPapers) == 0 {
+			wasRemoved = false
+		}
+
+		for _, pos := range eliminatedPapers {
+			rolls[pos.y][pos.x] = None
+		}
+
+		eliminatedPapers = eliminatedPapers[:0]
+	}
+
+	return
+}
