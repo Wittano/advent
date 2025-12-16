@@ -6,4 +6,5 @@ func main() {
 	TaskTwoPartOne()
 	TaskTwoPartTwo()
 	TaskThreePartOne()
+	TaskFourPartOne()
 }
