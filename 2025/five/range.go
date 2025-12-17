@@ -3,12 +3,18 @@ package five
 import (
 	"bufio"
 	"fmt"
+	"math"
+	"sort"
 	"strconv"
 	"strings"
 )
 
 type Range struct {
 	begin, end int
+}
+
+func (r Range) String() string {
+	return fmt.Sprintf("%d-%d", r.begin, r.end)
 }
 
 func extractRanges(scan *bufio.Scanner) ([]Range, error) {
@@ -87,4 +93,31 @@ func CountFreshFood(in string) (amount uint, err error) {
 	}
 
 	return
+}
+
+func CountPossibleFreshFood(in string) (int, error) {
+	ranges, _, err := newRangePair(in)
+	if err != nil {
+		return 0, err
+	}
+
+	sort.Slice(ranges, func(i, j int) bool {
+		return ranges[i].begin < ranges[j].begin
+	})
+
+	var (
+		amount  float64
+		currMax float64
+	)
+	for _, r := range ranges {
+		if float64(r.end) < currMax {
+			continue
+		}
+
+		start := math.Max(float64(r.begin), currMax)
+		currMax = math.Max(currMax, float64(r.end+1))
+		amount += math.Abs(float64(r.end)-start) + 1
+	}
+
+	return int(amount), nil
 }
