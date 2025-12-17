@@ -1,4 +1,4 @@
-package main
+package tasks
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/wittano/advent/text"
 )
 
-func TaskFourPartOne() {
+func FourPartOne() {
 	rawContent, err := text.ReadFile("./2025/data/4.1.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -22,7 +22,7 @@ func TaskFourPartOne() {
 	fmt.Printf("Day 4, part 1: Result %d\n", sum)
 }
 
-func TaskFourPartTwo() {
+func FourPartTwo() {
 	rawContent, err := text.ReadFile("./2025/data/4.2.txt")
 	if err != nil {
 		log.Fatal(err)

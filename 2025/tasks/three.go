@@ -1,4 +1,4 @@
-package main
+package tasks
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"github.com/wittano/advent/text"
 )
 
-func TaskThreePartOne() {
+func ThreePartOne() {
 	in, err := text.ReadFileByLines("./2025/data/3.1.txt")
 	if err != nil {
 		log.Fatal(err)
